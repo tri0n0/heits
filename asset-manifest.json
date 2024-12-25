@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/heits/static/css/main.8a0b1b6b.css",
+    "main.js": "/heits/static/js/main.ef1f62db.js",
+    "static/js/488.80be0378.chunk.js": "/heits/static/js/488.80be0378.chunk.js",
+    "static/media/1.png": "/heits/static/media/1.604ee42bb1d0aa0dc91b.png",
+    "index.html": "/heits/index.html",
+    "main.8a0b1b6b.css.map": "/heits/static/css/main.8a0b1b6b.css.map",
+    "main.ef1f62db.js.map": "/heits/static/js/main.ef1f62db.js.map",
+    "488.80be0378.chunk.js.map": "/heits/static/js/488.80be0378.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8a0b1b6b.css",
+    "static/js/main.ef1f62db.js"
+  ]
+}
