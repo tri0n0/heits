@@ -1,0 +1,144 @@
+.communities-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.communities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.community-card {
+  background: #1a1a1b;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid;
+  transition: transform 0.2s ease;
+}
+
+.community-card:hover {
+  transform: translateY(-4px);
+}
+
+.community-header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.community-icon {
+  font-size: 24px;
+}
+
+.community-info {
+  padding: 20px;
+}
+
+.member-count {
+  color: #818384;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.community-actions {
+  padding: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.join-button, .visit-button {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.join-button {
+  background: #0079d3;
+  color: white;
+  border: none;
+  flex: 1;
+}
+
+.join-button.joined {
+  background: #272729;
+}
+
+.visit-button {
+  background: transparent;
+  color: #0079d3;
+  border: 1px solid #0079d3;
+  text-decoration: none;
+  flex: 1;
+}
+
+.create-community-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #1a1a1b;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.create-community-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #d7dadc;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  padding: 12px;
+  background: #272729;
+  border: 1px solid #343536;
+  border-radius: 4px;
+  color: #d7dadc;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.create-button {
+  padding: 12px 24px;
+  background: #0079d3;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.create-button:hover {
+  background: #0060a8;
+  transform: translateY(-1px);
+} 

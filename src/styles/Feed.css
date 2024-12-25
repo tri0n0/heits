@@ -1,0 +1,76 @@
+.feed-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.sort-bar {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #343536;
+  margin-bottom: 20px;
+}
+
+.sort-button {
+  padding: 8px 16px;
+  background: #1a1a1b;
+  border: 1px solid #343536;
+  border-radius: 20px;
+  color: #818384;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sort-button.active {
+  background: #272729;
+  color: #d7dadc;
+  border-color: #d7dadc;
+}
+
+.sort-button:hover {
+  background: #272729;
+  color: #d7dadc;
+}
+
+.no-posts {
+  text-align: center;
+  padding: 40px;
+  background: #1a1a1b;
+  border-radius: 4px;
+  color: #818384;
+}
+
+.vote-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  background: #1a1a1b;
+  border-radius: 4px;
+}
+
+.vote-button {
+  background: transparent;
+  border: none;
+  color: #818384;
+  cursor: pointer;
+  padding: 4px;
+  transition: all 0.2s ease;
+}
+
+.vote-button.voted {
+  color: #0079d3;
+}
+
+.vote-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.vote-count {
+  color: #d7dadc;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 4px 0;
+} 

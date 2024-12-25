@@ -1,0 +1,809 @@
+.App {
+  display: flex;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.post-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+  overflow: hidden; /* Prevent background scrolling */
+}
+
+.post-form-container {
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh; /* Limit height to 90% of viewport */
+  overflow-y: auto; /* Add scrolling to form if needed */
+  margin: 0;
+  padding: 24px 32px;
+  background-color: #1e1e1e;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+/* Add custom scrollbar for the form */
+.post-form-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.post-form-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.post-form-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.post-form-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Prevent body scrolling when form is open */
+body.form-open {
+  overflow: hidden;
+}
+
+.post-form-title {
+  margin-bottom: 24px;
+  font-size: 2rem;
+}
+
+.post-form-input {
+  width: 100%;
+  padding: 10px 14px;
+  margin: 8px 0;
+}
+
+textarea.post-form-input {
+  min-height: 120px;
+  margin-bottom: 16px;
+}
+
+.post-type-tabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.post-type-tabs button {
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.post-type-tabs button.active {
+  background-color: #4a9eff;
+  border-color: #4a9eff;
+  font-weight: 600;
+}
+
+.media-upload-section {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+}
+
+.media-preview {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.media-preview img,
+.media-preview video {
+  max-height: 300px;
+}
+
+button[type="submit"] {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #4a9eff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #3b7fd9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.2);
+}
+
+button[type="submit"]:disabled {
+  background-color: #2d2d2d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.media-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.media-buttons button {
+  flex: 1;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.media-buttons button:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #4a9eff;
+}
+
+/* Add smooth transitions */
+.post-form-container * {
+  transition: all 0.3s ease;
+}
+
+/* Add placeholder styling */
+.post-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.post-card {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #2d2d2d;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: left;
+}
+
+.post-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.post-actions button {
+  padding: 6px 12px;
+  background-color: #363636;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.post-actions button:last-child {
+  background-color: #ff4444;
+}
+
+.edit-form {
+  padding: 15px;
+  background-color: #363636;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  background-color: #2d2d2d;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+  color: white;
+}
+
+.edit-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.edit-actions button {
+  padding: 6px 12px;
+  background-color: #363636;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-actions button:last-child {
+  background-color: #1e88e5;
+}
+
+.post-media {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.post-media img {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.post-media video {
+  max-width: 100%;
+  max-height: 500px;
+  border-radius: 8px;
+}
+
+.post-media audio {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.post-description {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #363636;
+  border-radius: 8px;
+}
+
+.post-description p {
+  margin: 0;
+  color: #ffffff;
+}
+
+.search-result-item:hover {
+  background-color: #363636;
+}
+
+.sidebar {
+  width: 250px;
+  height: calc(100vh - 80px);
+  background-color: #2d2d2d;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 80px;
+  overflow-y: auto;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 250px;
+  margin-right: 300px;
+  padding: 20px;
+  margin-top: 80px;
+}
+
+.topics-section,
+.communities-section {
+  margin-bottom: 30px;
+}
+
+.topics-section h2,
+.communities-section h2 {
+  color: #ffffff;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.topics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.topic-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #363636;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.topic-button:hover {
+  background-color: #404040;
+}
+
+.topic-button.active {
+  background-color: #1e88e5;
+}
+
+.topic-icon {
+  font-size: 1.2rem;
+}
+
+.communities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.community-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background-color: #363636;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.community-item:hover {
+  background-color: #404040;
+}
+
+.community-icon {
+  font-size: 1.5rem;
+}
+
+.community-info {
+  flex: 1;
+}
+
+.community-info h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.community-info p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #999999;
+}
+
+.create-post-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.create-post-button:hover {
+  background-color: #1976d2;
+}
+
+.right-sidebar {
+  width: 300px;
+  height: calc(100vh - 80px);
+  background-color: #2d2d2d;
+  padding: 20px;
+  position: fixed;
+  right: 0;
+  top: 80px;
+  overflow-y: auto;
+}
+
+/* Add navbar styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #363636;
+  z-index: 1000;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.navbar-logo {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #363636;
+  padding: 2px;
+}
+
+/* Update navbar styles */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-create-post {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.navbar-create-post:hover {
+  background-color: #1976d2;
+}
+
+.navbar-create-post span {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #363636;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.navbar-avatar:hover {
+  border-color: #1e88e5;
+}
+
+/* You can remove or hide the old create post button in main content */
+.create-post-button {
+  display: none; /* Hide the old button */
+}
+
+/* Add styles for user menu */
+.user-menu {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: #2d2d2d;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+}
+
+.user-menu button {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+}
+
+.user-menu button:hover {
+  background-color: #363636;
+}
+
+/* Add styles for join button */
+.join-button {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: #1e88e5;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.join-button.joined {
+  background-color: #363636;
+}
+
+.join-button:hover {
+  background-color: #1976d2;
+}
+
+.join-button.joined:hover {
+  background-color: #ff4444;
+}
+
+/* Title styling */
+.navbar-title {
+  font-family: 'Poppins', sans-serif;  /* Elegant font - make sure to import it */
+  color: #ffffff;  /* White base color */
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(120deg, #4a9eff, #63f5aa);  /* Gradient text */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.navbar-title:hover {
+  text-shadow: 0 4px 8px rgba(74, 158, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Post title styling */
+.post-card h3 {
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Topic titles */
+.topics-section h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #4a9eff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Community section title */
+.communities-section h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #4a9eff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Add this in your HTML head section */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.post-form-title {
+  margin-bottom: 24px;
+  font-size: 2.5rem;
+  /* The existing navbar-title styles will apply here too */
+}
+
+.post-form-input {
+  margin-top: 20px;
+}
+
+/* Close button for the form */
+.post-form-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: 24px;
+  padding: 4px;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.post-form-close:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.form-buttons button {
+  flex: 1;
+}
+
+.cancel-button {
+  background-color: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+}
+
+.cancel-button:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.title-section {
+  margin-bottom: 32px;
+}
+
+.post-form-motto {
+  color: #4a9eff;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.3s;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+  background: linear-gradient(120deg, #4a9eff, #63f5aa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add hover effect */
+.title-section:hover .post-form-motto {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Remove the shimmer effect animation */
+.post-form-motto::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  /* Remove the shimmer animation */
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.post-avatar {
+  width: 32px;  /* Smaller size */
+  height: 32px;  /* Smaller size */
+  border-radius: 50%;  /* Makes it perfectly round */
+  margin-right: 12px;
+  object-fit: cover;  /* Ensures image covers the space properly */
+  border: 2px solid #4a9eff;  /* Optional: adds a nice border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+}
+
+.post-user-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.post-user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.post-timestamp {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2px;
+}
+
+.post-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.post-actions button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.post-actions button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #4a9eff;
+}
+

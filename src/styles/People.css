@@ -1,0 +1,181 @@
+.people-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.people-container h2 {
+  color: #d7dadc;
+  margin-bottom: 24px;
+  font-size: 24px;
+}
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.user-card {
+  background: #1a1a1b;
+  border: 1px solid #343536;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.user-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-info h3 {
+  color: #d7dadc;
+  margin: 0;
+  font-size: 16px;
+}
+
+.username {
+  color: #818384;
+  font-size: 14px;
+}
+
+.follow-button {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  background: #0079d3;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.follow-button.following {
+  background: #272729;
+}
+
+.follow-button:hover {
+  transform: translateY(-1px);
+}
+
+.user-bio {
+  color: #d7dadc;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.user-stats {
+  display: flex;
+  gap: 8px;
+  color: #818384;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.user-interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.interest-tag {
+  padding: 4px 12px;
+  background: #272729;
+  color: #d7dadc;
+  border-radius: 16px;
+  font-size: 12px;
+}
+
+/* Hover effects */
+.user-card:hover .user-avatar {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .people-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .user-card {
+    padding: 16px;
+  }
+  
+  .user-avatar {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Loading state */
+.user-card.loading {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Add these loading state styles */
+.loading-text {
+  height: 12px;
+  background: #272729;
+  border-radius: 4px;
+  margin: 4px 0;
+  animation: pulse 1.5s infinite;
+}
+
+.user-avatar.loading {
+  background: #272729;
+  animation: pulse 1.5s infinite;
+}
+
+.loading-text:first-child {
+  width: 70%;
+}
+
+.loading-text:last-child {
+  width: 40%;
+}
+
+/* Make sure the container is visible */
+.main-content {
+  padding-top: 76px; /* Height of navbar */
+  min-height: calc(100vh - 76px);
+  background: #0a0a0a;
+}
+
+/* Ensure proper spacing */
+.people-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #0a0a0a;
+} 

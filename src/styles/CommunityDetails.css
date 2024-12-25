@@ -1,0 +1,49 @@
+.community-detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.community-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #1a1a1b;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.community-content {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+}
+
+.main-content {
+  background: #1a1a1b;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-community,
+.rules-section {
+  background: #1a1a1b;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.community-post {
+  padding: 15px;
+  border-bottom: 1px solid #343536;
+}
+
+.community-post:last-child {
+  border-bottom: none;
+} 
