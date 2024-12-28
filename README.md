@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 # heits
-Just a form project with Devi inside it!!
+Just a Open Forum project with Devi inside it!!
 =======
 # Getting Started with Create React App
 
